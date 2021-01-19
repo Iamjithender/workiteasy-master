@@ -1,0 +1,48 @@
+{% extends 'customerbase.html' %}
+
+{% block customer_block %}
+
+<h3 style="font-family: serif;">your notifications </h3>
+<p style="float: right;">*click to view thier respective pages</p><br>
+<ol class="list-group">
+    {% if not connects and not chats%}
+    <a class="nav-link" href="{% url 'accounts:customerhistory' %}">
+    <h5>You can check out History page for your past details </h5></a>
+    {% endif %}
+    {% for connect in connects %} 
+        {% if  connect.status == 1 %}
+        
+        <a class="nav-link" href="{% url 'accounts:customersrequests' %}"><li class="list-group-item">
+        <h5>Requested: You have requested  {{connect.mediator.user.username}} for connection at {{ connect.start_date }} </h5>
+        </li></a>
+        {% elif connect.status == 2 %}
+        
+        <a class="nav-link" href="{% url 'accounts:customersaccepted' %}"><li class="list-group-item">
+        <h5>Accepted: Your request was accepted by {{connect.mediator.user.username}} at {{connect.completed_date}}</h5>
+         </li></a>
+
+        {% elif connect.status == 3 %} 
+        
+        <a class="" href="{% url 'accounts:customersrejected' %}"><li class="list-group-item">
+        <h5>Rejected: {{connect.mediator.user.username}} had rejected your request at {{connect.completed_date}} </h5></li></a>
+        
+        {% elif connect.status == 4 %}
+        
+        <a class="dropdown-item" href="{% url 'accounts:customerscompleted' %}"> <li class="list-group-item"> 
+        <h5>Completed: You have succesfully completed your work with {{connect.mediator.user.username}}</h5></li></a> 
+         {% elif connect.status == 5 %}
+         
+         <a class="dropdown-item" href="{% url 'accounts:customerscancelled' %}"><li class="list-group-item">
+        <h5>Cancelled: Connection with {{connect.mediator.user.username}} is cancelled at {{connect.completed_date}}</h5></li></a> 
+          
+        {% endif %}
+
+    </li>
+    {% endfor %}
+    {% for chat in chats %}
+    <a style=" margin-right: 16px;" href="{% url 'accounts:customerchats' pk1=chat.chats.customer.pk pk2=chat.chats.mediator.pk  %}">
+        <li class="list-group-item"> <h5>  Message: you got a message from {{chat.chats.mediator.user.username}} </h5></li></a>
+    {% endfor %}
+</ol>
+
+{% endblock %}

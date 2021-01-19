@@ -1,0 +1,25 @@
+{% extends 'mediatorbase.html' %}
+{% block mediator_block %}
+
+    <h4 style="font-family: serif;">below are the reviews:-</h4>
+    <ol class="list-group">
+        {% for rating in ratings %}
+        {% if rating.comment %}
+        <li class="list-group-item">
+            <div style="font-family:cursive;font-size: 0.8em;">ratedby:{{rating.customer.user.username}} 
+            <div style="float: right;font-size: 0.6em;">rated at:{{ rating.review_date }}</div><br> </div> 
+            <br>
+            rating:{{rating.rating}}
+            <a style="float: right;font-size: 0.6em;" href="#"><button><span class="glyphicon glyphicon-thumbs-up"></span></button></a>
+            <br>
+            <div style="float: right;font-size: 0.6em;">no of likes:{{ rating.likes }}</div>
+            comment:{{rating.comment}}
+
+    
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ol>
+    
+
+{% endblock %}

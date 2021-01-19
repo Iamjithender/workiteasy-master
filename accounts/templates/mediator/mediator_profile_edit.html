@@ -1,0 +1,33 @@
+{% extends 'mediatorbase.html' %}
+{% load bootstrap3 %} 
+{% block mediator_block %}
+
+
+<div class='jumbotron'> 
+    <div style="float:right;">*edit only which are reqired</div><br><br>
+    <form action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <label for="">Present Working Days&emsp; <span style="font-size: 0.7em;">
+            {% for day in mediator.weekdays %} 
+                {{ day }}   |
+            {% endfor %}</span></label>
+    <ul>
+      <li><input type="checkbox" id="1"  name="list" value="Monday"><label for="1"> &emsp;Monday</label></li>  
+      <li><input type="checkbox" id="2"name="list" value="Tuesday"><label for="2">&emsp;Tuesday </label></li> 
+      <li><input type="checkbox" id="3"   name="list" value="Wednesday"><label for="3">&emsp;Wednesday</label></li> 
+      <li><input type="checkbox" id="4"   name="list" value="Thursday"><label for="4">&emsp;Thursday</label></li> 
+      <li><input type="checkbox" id="5"   name="list" value="Friday"><label for="5">&emsp;Friday</label></li> 
+      <li><input type="checkbox" id="6" name="list" value="Saturday"><label for="6">&emsp;Saturday</label></li>  
+      <li><input type="checkbox" id="7"  name="list" value="Sunday"><label for="7">&nbsp;&nbsp; Sunday </label></li>  
+    </ul>
+        <a href="{% url 'accounts:mediatorprofile' %}"><button class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
+    
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}

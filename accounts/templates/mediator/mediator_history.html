@@ -1,0 +1,44 @@
+{% extends 'mediatorbase.html' %}
+
+{% block mediator_block %}
+
+<h3 style="font-family: serif;">below are the details of your history</h3>
+<ol class="list-group">
+    {% for connect in connects %} 
+        {% if  connect.status == 1 %}
+        
+        <a class=" " href="{% url 'accounts:mediatorsrequests' %}"><li class="list-group-item">
+            <h5>you got a request from {{connect.customer.user.username}} for connection at {{ connect.start_date }} and you have to take corresponding action</h5>
+        </li></a>
+        {% elif connect.status == 2 %}
+        
+        <a class= "" href="{% url 'accounts:mediatorsaccepted' %}"><li class="list-group-item">
+            <h5>you got a request from {{connect.customer.user.username}} for connection and you accepted his request at {{connect.completed_date}} and you have to complete the further process</h5>
+        </li></a>
+
+        {% elif connect.status == 3 %} 
+        
+        <a class="" href="{% url 'accounts:mediatorsrejected' %}"><li class="list-group-item">
+             <h5>you got a request from {{connect.customer.user.username}} for connection and you rejected his request at {{connect.completed_date}} </h5>
+       
+        </li></a>
+        
+        {% elif connect.status == 4 %}
+        
+        <a class=" " href="{% url 'accounts:mediatorscompleted' %}"> <li class="list-group-item">    
+         <h5>you got a request from {{connect.customer.user.username}} for connection and you accepted at {{connect.assured_date}} and work was succesfully completed by {{connect.completed_date}}</h5>
+       
+    </li></a> 
+         {% elif connect.status == 5 %}
+         
+         <a class=" " href="{% url 'accounts:mediatorscancelled' %}"><li class="list-group-item">
+             <h5>customer {{connect.customer.user.username}} cancelled his request at {{connect.completed_date}}</h5>
+         </li></a> 
+           
+        {% endif %}
+ 
+    {% endfor %}
+
+</ol>
+
+{% endblock %}

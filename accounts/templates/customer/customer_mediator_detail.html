@@ -1,0 +1,63 @@
+{% extends 'customerbase.html' %}
+
+<h1>hello world </h1>
+
+<h3>name:       {{user.username}}</h3>
+{% block customer_block %}
+<div class='jumbotron'>
+    <h3 style="font-family:fantasy;">Below are the details of the Mediator</h3   >
+    <br>
+    <img src="{{ mediator.profile_pic.url }}" class="img-thumbnail "style="width:150px;height:180px; float: right;" alt="oops not found">
+    
+    <h3>name:      &numsp;   {{mediator.user.username}}</h3>
+    <br>
+    <h3>location:&numsp;     {{mediator.location}}</h3>
+    <br>
+    <h3>department: &numsp;  {{mediator.department}}</h3>
+    {% if connect %} <br>
+    <a style="float:right;margin-right: 3%;" href="{% url 'accounts:customerchats' pk1=customer.pk pk2=mediator.pk  %}">
+    <button class="btn btn-info btn-lg">chat</button></a>
+    <h3>average rating:&numsp;   {{mediator.avg_rating}}</h3><br>
+    <button  style="float: right;" class="btn btn-basic"><span class="glyphicon glyphicon-ok">Requested</span></button>
+    <!-- <input type="submit" value="requested" class="btn btn-"><br><br> -->
+
+    {% else %}
+    <br>
+    <h3>average rating: &numsp; {{mediator.avg_rating}}</h3>
+  
+    <form style="float: right;" method="POST"> 
+    {% csrf_token %}
+    {{ form }} <br>
+    <input style="float: right;"     type="submit" value="Request" class="btn btn-primary">
+    </form>  <br>
+    {% endif %}
+    <br><br>
+
+
+
+
+
+
+    <h4 style="font-family: serif;">below are the reviews:-</h4>
+    <ol class="list-group">
+        {% for rating in ratings %}
+        {% if rating.comment %}
+        <li class="list-group-item">
+            <div style="font-family:cursive;font-size: 0.8em;">ratedby:{{rating.customer.user.username}} 
+            <div style="float: right;font-size: 0.6em;">rated at:{{ rating.review_date }}</div><br> </div> 
+            <br>
+            rating:&emsp;{{rating.rating}}    
+            <!-- <h1><span class="glyphicon glyphicon-repeat"> </span></h1> -->
+            <br>
+            <!-- <div style="float: right;font-size: 0.6em;">no of likes: {{ rating.likes }}</div> -->
+            comment:&emsp; {{rating.comment}}
+
+    
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ol>
+</div>
+
+
+{% endblock %}

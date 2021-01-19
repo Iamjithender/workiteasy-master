@@ -1,0 +1,78 @@
+
+{% extends 'customerbase.html' %}
+{% load bootstrap4 %}
+{% block customer_block %}
+
+<h1>Welcome to customer interface</h1>
+
+ 
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}     
+    
+    <div class=" btn-group" style="margin-left: 30px;">
+        <br>
+        <button  type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"> Days </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <ul>
+            <li class="dropdown-item">
+              <input type="checkbox" name="list" value="Monday">
+              <label for="0" class="">Monday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox"  name="list" value="Tuesday">
+              <label for="1">Tuesday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox" name="list" value="Wednesday">
+              <label for="2">Wednesday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox"name="list" value="Thrusday">
+              <label for="3">Thursday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox"  name="list" value="Friday">
+              <label for="4">Friday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox" name="list" value="Saturday">
+              <label for="5">Saturday</label>
+            </li>
+            <li class="dropdown-item">
+              <input type="checkbox"  name="list" value="Sunday">
+              <label for="6">Sunday</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+
+
+    <input type="submit" class="btn btn-primary" value="Search">
+</form>
+<br>
+<h1>List of Mediators Available</h1>
+
+<div class="index">
+<ul class="list-group index"></ul>
+
+{% for mediator in mediators %}
+    <li class="list-group-item .table-striped indexli">
+        <a style="float:right" href="{% url 'accounts:customermediatordetail' pk1=customer.pk pk2=mediator.pk  %}">
+            <button class="btn btn-info btn-sm">details</button></a> 
+    <a style="float:right;margin-right: 16px;" href="{% url 'accounts:customerchats' pk1=customer.pk pk2=mediator.pk  %}">
+    <button class="btn btn-success btn-sm">chat</button></a>
+        Name:    &numsp;&numsp;  {{mediator.user.username}}   <br>
+            Rating: &nbsp;&numsp; {{mediator.avg_rating}} 
+<br>
+         </li> 
+    
+
+{% endfor %}
+
+</div>
+</table>
+
+{% endblock %}

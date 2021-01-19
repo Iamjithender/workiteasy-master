@@ -1,0 +1,20 @@
+{% extends 'customerbase.html' %}
+{% block customer_block %}
+
+<strong>Below are the Completed orders</strong>
+<br>
+<br>
+ 
+    <ol class="list-group">
+{% for obj in connects %}
+<li class="list-group-itsem">     
+    mediator Name:-{{obj.mediator.user.username}} <br>
+        mediator_location:-{{obj.mediator.location}}   <br>
+        mediator_department:-{{obj.mediator.department}}       
+        <a href="{% url 'accounts:ratemediator' pk1=obj.customer.pk pk2=obj.mediator.pk %}"><input style="float: right;" type="submit" class="btn btn-xs btn-info" value="Rate" ></a><br>
+      
+   
+</li>
+{% endfor %}
+</ol> 
+{% endblock %}s

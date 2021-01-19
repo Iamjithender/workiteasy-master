@@ -1,0 +1,31 @@
+{% extends 'customerbase.html' %}
+
+<h1>hello world </h1>
+
+{% block customer_block %}
+<div class='jumbotron'>
+    <h3 style="font-family:fantasy;">Below are your profile details:-</h3   >
+        <br>
+        {% if customer.profile_pic %}
+    <img src="{{ customer.profile_pic.url }}" class="img-thumbnail "style="width:150px;height:180px; float: right;" alt="profile picture not uploaded">
+    {% else %}
+    <img src="#" class="img-thumbnail "style="width:150px;height:180px; float: right;" alt="profile picture not uploaded correctly">
+    
+{% endif %}
+    <h3>name:       {{customer.user.username}}</h3>
+    <br>
+    <h3>location:   {{customer.location}}</h3> 
+    <br>
+    <h3>phonenumber:{{customer.user.phonenumber}}</h3>
+    <br>
+    <h3>email:      {{customer.user.email}}</h3>
+    <br>
+    <a href="{% url 'accounts:customerprofileedit' %}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
+    <a href="{% url 'accounts:customerindex' %}"><input type="submit" class="btn btn-primary" value="index"></a>
+    <a href="{% url 'accounts:customersrequests' %}"><button class="btn btn-success">requests</button></a>
+    <a href="{% url 'accounts:customersaccepted' %}"><button class="btn btn-success">accepts</button></a>
+    <a href="{% url 'accounts:customerhistory' %}"><button class="btn btn-success">history</button></a>
+</div>  
+
+
+{% endblock %}

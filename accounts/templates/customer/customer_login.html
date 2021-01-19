@@ -1,0 +1,20 @@
+{% extends 'startbase.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="jumbotron" id="login">
+<h2 style="font: bold;">Customer Login</h2>
+<h5>Enter your details:-</h5>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-primary btn-lg" value="login">
+</form>
+<div class="signup">
+<h4>if you dont have account create one here</h4>
+<a href="{% url 'accounts:customersignup' %}"><button class="btn btn-info  ">Signup!</button></a> 
+</div>
+</div>
+
+{% endblock %}

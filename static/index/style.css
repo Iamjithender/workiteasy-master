@@ -1,0 +1,38 @@
+
+body{ 
+        /* background : url(https://img.freepik.com/free-vector/bright-background-with-dots_1055-3132.jpg?size=338&ext=jpg) 50% 0 no-repeat fixed; */
+    background-color:rgb(206, 230, 201);height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#login.jumbotron{
+    width: 50%; 
+  margin-left: auto ;
+  margin-right: auto ;
+  color: rgb(7, 7, 7);
+  background-color:rgb(176, 182, 184);
+}
+.signup{
+    color: rgb(67, 71, 71);
+}
+.jumbotron{
+    width: 90%; 
+    margin-top: 3%;
+    margin-bottom: 3%;
+  margin-left: auto ;
+  margin-right: auto ;
+  background-color: rgb(176, 182, 184);
+}
+.index{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: auto ;  
+    font-size: large;
+}
+/* .signuppage{ */
+/* } */
+.nav1 {
+    color:mediumslateblue;
+}

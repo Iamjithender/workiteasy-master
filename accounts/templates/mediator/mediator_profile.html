@@ -1,0 +1,48 @@
+{% extends 'mediatorbase.html' %}
+
+<h1>hello world </h1>
+
+{% block mediator_block %}
+<div class='jumbotron'>
+    <h3 style="font-family:fantasy;">Below are your profile details:-</h3   >
+    <br>
+    {% if mediator.profile_pic %}
+<img src="{{ mediator.profile_pic.url }}" class="img-thumbnail "style="width:150px;height:180px; float: right;" alt="profile picture not uploaded">
+{% else %}
+<img src="#" class="img-thumbnail "style="width:150px;height:180px; float: right;" alt="profile picture not uploaded correctly">
+
+{% endif %}
+    <h3>Name:     &numsp;    {{mediator.user.username}}</h3>
+    <br>
+    <h3>Location: &numsp;    {{mediator.location}}</h3>
+    <br>
+    <h3>Department:&numsp;  {{mediator.department}}</h3>
+    <br>
+    <h3>Phone Number:&numsp;{{mediator.user.phonenumber}}</h3>
+    <br>
+    <h3>Email: &numsp;   {{mediator.user.email}}</span>  </h3><br>
+    <h3>Average Rating:&numsp;   {{mediator.avg_rating}}</h3><br>   
+    <h3>Unavilable dates:-
+        <span style="font-size: 0.7em;">
+    {% for date in mediator.unavailable_days %} 
+        {{ date }}   || 
+    {% endfor %}
+    </span>
+</h3><br>
+<h3>Weekdays:-  
+    <span style="font-size: 0.7em;">
+    {% for day in mediator.weekdays %} 
+        {{ day }}   |
+    {% endfor %}</span>
+</h3><br>
+    
+    <a href="{% url 'accounts:mediatorprofileedit' %}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
+    <a href="{% url 'accounts:mediatorindex' %}"><input type="submit" class="btn btn-primary" value="index"></a>
+    <a href="{% url 'accounts:mediatorsrequests' %}"><button class="btn btn-success">requests</button></a>
+    <a href="{% url 'accounts:mediatorsaccepted' %}"><button class="btn btn-success">accepts</button></a>
+    <a href="{% url 'accounts:mediatorhistory' %}"><button class="btn btn-success">history</button></a>
+    <a href="{% url 'accounts:mediatorreviews' %}"><button class="btn btn-info">reviews</button></a>
+</div>
+
+
+{% endblock %}

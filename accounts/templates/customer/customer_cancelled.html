@@ -1,0 +1,20 @@
+{% extends 'customerbase.html' %}
+{% block customer_block %}
+
+<strong>Below are the Cancelled orders</strong>
+<br>
+<br>
+ 
+    <ol class="list-group">
+{% for obj in connects %}
+<li class="list-group-item">     
+    mediator Name:-{{obj.mediator.user.username}} <br>
+        mediator_location:-{{obj.mediator.location}}   <br>
+        mediator_department:-{{obj.mediator.department}} 
+        <a style="float:right" href="{% url 'accounts:customermediatordetail' pk1=obj.customer.pk pk2=obj.mediator.pk  %}">
+            <button class="btn btn-info btn-sm">details</button></a> 
+   
+</li>
+{% endfor %}
+</ol> 
+{% endblock %}

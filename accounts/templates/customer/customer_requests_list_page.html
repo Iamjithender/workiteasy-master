@@ -1,0 +1,26 @@
+{% extends 'customerbase.html' %}
+{% block customer_block %}
+
+<h1>Welcome to customer-interface</h1>
+
+
+<strong>below are the requests</strong>
+<br>
+<br>
+
+<!-- <div class="jumbotron"> -->
+    <ol class="list-group">
+{% for obj in connects %}
+<li class="list-group-item">     mediator Name:-{{obj.mediator.user.username}} <br>
+      
+        mediator_location:-{{obj.mediator.location}}   <br>
+        mediator_department:-{{obj.mediator.department}} 
+        <form action="{% url 'accounts:cancelconnectioncustomermediator' pk=obj.pk %}">
+            <input style="float: right;" type="submit" value="Canncel" class="btn btn-danger btn-xs ">
+        </form>     
+   
+</li>
+{% endfor %}
+</ol>
+<!-- </div> -->
+{% endblock %}

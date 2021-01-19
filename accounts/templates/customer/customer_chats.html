@@ -1,0 +1,34 @@
+{% extends 'customerbase.html' %}
+{% load bootstrap3%}
+{% block customer_block %}
+ 
+
+<h3>below are your chat messages:-</h3>
+<div style="border:2px solid black;">
+    <ol class="list-group" >
+        {% for message in messages %}
+     
+ 
+        {% if  message.is_customer %}      
+        <li class="list-group-item" style="background-color: rgb(137, 250, 162);"  >
+			<div style="float: right;"> {{message.message}}  &nbsp; <span style="padding-top: 10px;font-size: 0.55em;">{{message.date|date:'Y-m-d H:i'}}
+			</span></div><br>
+        </li> 
+        {% else %}
+        <li class="list-group-item" style="background-color: #abd0fa;"  >
+			<div > {{message.message}}  &nbsp; <span style="padding-top: 10px;font-size: 0.55em;">{{message.date|date:'Y-m-d H:i'}}
+			</span></div>
+        </li> 
+        {% endif %}
+    {% endfor %}
+</ol>
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input  style="float: right;" type="submit" value="send" class="btn btn-primary">
+        <br><br>
+    </form>
+</div>
+
+
+{% endblock %}

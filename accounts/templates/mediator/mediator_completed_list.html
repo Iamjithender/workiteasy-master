@@ -1,0 +1,28 @@
+{% extends 'mediatorbase.html' %}
+{% block mediator_block %}
+
+<!-- <h1>Welcome to Mediator-interface</h1> -->
+
+
+<strong>Below are the List of Completed Orders</strong>
+<br>
+<br>
+
+<ol class="list-group">
+    {% for obj in connects %}
+    <li class="list-group-item">    
+        customer Name:-{{obj.customer.user.username}} <br> 
+        customer_location:-{{obj.customer.location}}  
+        <input style="float: right;margin-right: 16px;" type="submit" value="rejected" class="btn btn-default">
+        <form style="float: right; margin-right: 16px;" action="{% url 'accounts:mediatorchats' pk1=obj.customer.pk pk2=obj.mediator.pk %}">
+            <input type="submit" value="chat" class="btn btn-success">
+            </form>
+    
+         <br><br>
+    </li> 
+    <br>
+    {% endfor %}
+    </ol>
+
+
+{% endblock %}

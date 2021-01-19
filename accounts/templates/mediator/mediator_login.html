@@ -1,0 +1,18 @@
+{% extends 'startbase.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="jumbotron" id="login">
+<h2>Mediator Login</h2>
+<h5>Enter your details:-</h5>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-primary btn-lg" value="login">
+</form>
+<h4>if you dont account create one here</h4>
+<a href="{% url 'accounts:mediatorsignup' %}"><button class="btn btn-info btn-sm">Signup!</button></a> 
+</div>
+
+{% endblock %}

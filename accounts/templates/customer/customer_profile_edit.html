@@ -1,0 +1,19 @@
+{% extends 'customerbase.html' %}
+{% load bootstrap3 %}
+<h1>hello world </h1>
+
+{% block customer_block %}
+<div class='jumbotron'>
+    <form action=""  enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <a href="{% url 'accounts:customerprofile' %}"><button class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
+    
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'customerbase.html' %}
+
+<h1>hello world </h1>
+
+{% block customer_block %}
+
+<h1>hello and Welcome</h1>
+<div class='jumbotron'>
+    
+    <h3>customer: {{customer.user.username}}</h3>
+    <h2>is connected to  </h2>
+    <h3>mediator name: {{mediator.user.username}} </h3><br>
+    {% for con in connect %}
+    <h3>Description : {{ con.request_description}}</h3>
+    {% endfor %}
+    <p>at {{time}}</p>
+
+    <a href="{% url 'accounts:customerindex' %}">mainpage</a>
+    </form>
+</div>
+
+
+{% endblock %}

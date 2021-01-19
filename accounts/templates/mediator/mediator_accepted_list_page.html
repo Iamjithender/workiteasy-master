@@ -1,0 +1,28 @@
+{% extends 'mediatorbase.html' %}
+{% block mediator_block %}
+
+<!-- <h1>Welcome to Mediator-interface</h1> -->
+
+
+<strong>below are the accepts</strong>
+<br>
+<br>
+
+<ol class="list-group">
+    {% for obj in connects %}
+    <li class="list-group-item">    
+        customer Name:-{{obj.customer.user.username}} <br> 
+        customer_location:-{{obj.customer.location}} <br> 
+        customer_phonebumber:-{{obj.customer.user.phonenumber}} 
+        <input style="float: right;" type="submit" value="accepted" class="btn btn-info btn-sm">
+        <form style="float: right;margin-right: 16px;" action="{% url 'accounts:completeconnection' pk1=obj.customer.pk pk2=obj.mediator.pk %}">
+            <input type="submit" value="complete" class="btn btn-primary btn-sm">
+            </form>
+         <br><br>
+    </li> 
+    <br>
+    {% endfor %}
+    </ol>
+
+
+{% endblock %}

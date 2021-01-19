@@ -1,0 +1,23 @@
+{% extends 'startbase.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<h1>Signup</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <label for="">Working Days </label>
+    <ul>
+      <li><input type="checkbox" id="1"  name="list" value="Monday"><label for="1"> &emsp;Monday</label></li>  
+      <li><input type="checkbox" id="2"name="list" value="Tuesday"><label for="2">&emsp;Tuesday </label></li> 
+      <li><input type="checkbox" id="3"   name="list" value="Wednesday"><label for="3">&emsp;Wednesday</label></li> 
+      <li><input type="checkbox" id="4"   name="list" value="Thursday"><label for="4">&emsp;Thursday</label></li> 
+      <li><input type="checkbox" id="5"   name="list" value="Friday"><label for="5">&emsp;Friday</label></li> 
+      <li><input type="checkbox" id="6" name="list" value="Saturday"><label for="6">&emsp;Saturday</label></li>  
+      <li><input type="checkbox" id="7"  name="list" value="Sunday"><label for="7">&nbsp;&nbsp; Sunday </label></li>  
+    </ul>
+    <input type="submit" class="btn btn-default" value="sign up">
+</form>
+
+
+{% endblock %}      
