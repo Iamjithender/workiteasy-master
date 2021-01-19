@@ -54,7 +54,7 @@ def customerIndexView(request):
                 print(new)
                 mediators=new
     mediators=mediators.order_by('-avg_rating')
-    form=forms.CustomerSearchForm() 
+    form=forms.CustomerSearchForm()
     return render(request,'customer/customer_index.html',{'mediators':mediators,'form':form,'customer':customer,})
 
 @mediatorloginonly

@@ -26,7 +26,7 @@ MEDIA_DIR=os.path.join(BASE_DIR,'media')
 SECRET_KEY = '4kyib3u08$9%2oe-0&*tq233ckq^1ktdfgs8vjk7v6=bujdql9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'workiteasy.herokuapp.com']
 

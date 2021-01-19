@@ -65,7 +65,7 @@
     <a style="float:right;margin-right: 16px;" href="{% url 'accounts:customerchats' pk1=customer.pk pk2=mediator.pk  %}">
     <button class="btn btn-success btn-sm">chat</button></a>
         Name:    &numsp;&numsp;  {{mediator.user.username}}   <br>
-            Rating: &nbsp;&numsp; {{mediator.avg_rating}} 
+            Rating: &nbsp;&numsp; {% if mediator.avg_rating %}{{mediator.avg_rating}} {% else %} no ratings yet {% endif %}
 <br>
          </li> 
     
